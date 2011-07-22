@@ -8,8 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
+using Microsoft.Office.Core;
+using Word = Microsoft.Office.Interop.Word;
+using System.Reflection;
 
 
 namespace FuzzOpen
@@ -108,8 +111,247 @@ namespace FuzzOpen
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void createPDF(String tempfilename, String newPath, Random random)
         {
+            //MessageBox.Show("PDF");
+
+            string newFileName = tempfilename + ".pdf";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+
+                // step 1: creation of a document-object
+                iTextSharp.text.Document myDocument = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate());
+
+                try
+                {
+                    // step 2:
+                    // Now create a writer that listens to this doucment and writes the document to desired Stream.
+                    iTextSharp.text.pdf.PdfWriter.GetInstance(myDocument, new FileStream(newPath, FileMode.Create));
+
+                    // step 3:  Open the document now using
+                    myDocument.Open();
+
+                    for (int x = 0; x < sizeofwrite; x++)
+                    {
+                        Byte[] b = new Byte[1];
+                        random.NextBytes(b);
+
+                        // step 4: Now add some contents to the document
+                        myDocument.Add(new iTextSharp.text.Paragraph(b[0].ToString()));
+                        //myDocument.Add(new Paragraph("First Pdf File made by Salman using iText"));
+                    }
+                }
+                catch (iTextSharp.text.DocumentException de)
+                {
+                    Console.Error.WriteLine(de.Message);
+                }
+                catch (IOException ioe)
+                {
+                    Console.Error.WriteLine(ioe.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    // step 5: Remember to close the documnet
+                    myDocument.Close();
+                    textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
+                }
+            }
+        }
+
+        private void createMP3(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("MP3");
+
+            string newFileName = tempfilename + ".mp3";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+        private void createDOC(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("DOC");
+
+            string newFileName = tempfilename + ".doc";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+
+            if (!System.IO.File.Exists(newPath))
+            {
+
+
+                object fileName = newPath;
+                object missing = System.Reflection.Missing.Value;
+                object endOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+
+                //Start Word and create a new document.  
+                Word._Application word = new Word.Application();
+                Word._Document document = word.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                for (int x = 0; x < sizeofwrite; x++)
+                {
+                    Byte[] b = new Byte[1];
+                    random.NextBytes(b);
+
+                    word.Selection.TypeText(b[0].ToString());
+                    word.Selection.TypeParagraph();
+                }
+                /*
+                //Insert a paragraph at the beginning of the document.
+                Word.Paragraph para1;
+                para1 = document.Content.Paragraphs.Add(ref missing);
+                para1.Range.Text = "Adding paragraph thru C#";
+                para1.Range.Font.Bold = 1;
+                para1.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                para1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
+                para1.Range.InsertParagraphAfter();
+                */
+                //word.Visible = true;
+
+
+
+                document.SaveAs2(ref fileName, ref missing, ref missing, ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing, ref missing);
+
+                document.Close(ref missing, ref missing, ref missing);
+                word.Quit(ref missing, ref missing, ref missing);
+                textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
+            }
+        }
+
+        private void createDOCX(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("DOCX");
+           
+            string newFileName = tempfilename + ".docx";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+
+            if (!System.IO.File.Exists(newPath))
+            {
+
+           
+                object fileName = newPath;
+                object missing = System.Reflection.Missing.Value;
+                object endOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+
+                //Start Word and create a new document.  
+                Word._Application word = new Word.Application();
+                Word._Document document = word.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                for (int x = 0; x < sizeofwrite; x++)
+                {
+                    Byte[] b = new Byte[1];
+                    random.NextBytes(b);
+
+                    word.Selection.TypeText(b[0].ToString());
+                    word.Selection.TypeParagraph();
+                }
+                /*
+                //Insert a paragraph at the beginning of the document.
+                Word.Paragraph para1;
+                para1 = document.Content.Paragraphs.Add(ref missing);
+                para1.Range.Text = "Adding paragraph thru C#";
+                para1.Range.Font.Bold = 1;
+                para1.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                para1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
+                para1.Range.InsertParagraphAfter();
+                */
+                //word.Visible = true;
+
+                    
+
+                document.SaveAs2(ref fileName, ref missing, ref missing, ref missing, ref missing, ref missing,
+                                    ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, 
+                                    ref missing, ref missing, ref missing, ref missing);
+
+                document.Close(ref missing, ref missing, ref missing);
+                word.Quit(ref missing, ref missing, ref missing);
+                textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
+            }
+        }
+
+        private void createXLS(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("XLS");
+
+            string newFileName = tempfilename + ".xls";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+        private void createXLSX(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("XLSX");
+
+            string newFileName = tempfilename + ".xlsx";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+        private void createPPT(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("PPT");
+
+            string newFileName = tempfilename + ".ppt";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+        private void createPPTX(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("PPTX");
+
+            string newFileName = tempfilename + ".pptx";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+        private void createAVI(String tempfilename, String newPath, Random random)
+        {
+            //MessageBox.Show("AVI");
+
+            string newFileName = tempfilename + ".avi";
+            newPath = System.IO.Path.Combine(newPath, newFileName);
+            int sizeofwrite = random.Next(1, 10000);
+
+            if (!System.IO.File.Exists(newPath))
+            {
+            }
+        }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {            
             if (textBox5.Text == "")
             {
                 textBox4.Text = "PROJECT NAME MISSING";
@@ -145,53 +387,47 @@ namespace FuzzOpen
                         }
                     }
 
-                    string newFileName = tempfilename + ".pdf";
-                    newPath = System.IO.Path.Combine(newPath, newFileName);
-                    int sizeofwrite = random.Next(1, 10000);
-
-                    if (!System.IO.File.Exists(newPath))
+                    foreach (int indexChecked in checkedListBox1.CheckedIndices)
                     {
-
-                        // step 1: creation of a document-object
-                        Document myDocument = new Document(PageSize.A4.Rotate());
-
-                        try
+                        if (checkedListBox1.GetItemCheckState(indexChecked) == CheckState.Checked)
                         {
-                            // step 2:
-                            // Now create a writer that listens to this doucment and writes the document to desired Stream.
-                            PdfWriter.GetInstance(myDocument, new FileStream(newPath, FileMode.Create));
-
-                            // step 3:  Open the document now using
-                            myDocument.Open();
-  
-                            for (int x = 0; x < sizeofwrite; x++)
+                            if (indexChecked == 0)
                             {
-                                Byte[] b = new Byte[1];
-                                random.NextBytes(b);
-
-                                // step 4: Now add some contents to the document
-                                myDocument.Add(new Paragraph(b[0].ToString()));
-                                //myDocument.Add(new Paragraph("First Pdf File made by Salman using iText"));
+                                createPDF(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 1)
+                            {
+                                createMP3(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 2)
+                            {
+                                createDOC(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 3)
+                            {
+                                createDOCX(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 4)
+                            {
+                                createXLS(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 5)
+                            {
+                                createXLSX(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 6)
+                            {
+                                createPPT(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 7)
+                            {
+                                createPPTX(tempfilename, newPath, random);
+                            }
+                            if (indexChecked == 8)
+                            {
+                                createAVI(tempfilename, newPath, random);
                             }
                         }
-                        catch (DocumentException de)
-                        {
-                            Console.Error.WriteLine(de.Message);
-                        }
-                        catch (IOException ioe)
-                        {
-                            Console.Error.WriteLine(ioe.Message);
-                        }
-                        catch (Exception ex)
-	                    {
-                            Console.Error.WriteLine(ex.Message);
-	                    }
-	                    finally
-	                    {
-                            // step 5: Remember to close the documnet
-                            myDocument.Close();
-                            textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
-	                    }
                     }
                 }
             }

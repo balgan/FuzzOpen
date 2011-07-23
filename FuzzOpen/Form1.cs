@@ -55,7 +55,7 @@ namespace FuzzOpen
                 {
 
 
-                    if (clsProcess.ProcessName.StartsWith(listBox2.Items[1].ToString()))
+                    if (clsProcess.ProcessName.StartsWith(listBox2.Items[1].ToString() + textBox6.ToString()))
                     {
                         //textBox3.Text += clsProcess.ToString() + System.Environment.NewLine;
                         System.Threading.Thread.Sleep(Convert.ToInt32(textBoxTimer.Text) * 1000);
@@ -108,6 +108,10 @@ namespace FuzzOpen
         private void Form1_Load(object sender, EventArgs e)
         {
             textBoxTimer.Text = "0";
+            textBox7.Enabled = false;
+            textBox8.Enabled = false;
+            textBox9.Enabled = false;
+            
 
         }
 
@@ -358,7 +362,12 @@ namespace FuzzOpen
             }
             else
             {
+                
                 int numberoffiles = Convert.ToInt32(textBox2.Text);
+                if(numberoffiles > 10){
+                    System.Windows.Forms.MessageBox.Show("Warning! Depending on your CPU this might take a while!");
+                }
+
                 Random random = new Random();
 
                 for (int i = 0; i < numberoffiles; i++)
@@ -370,7 +379,7 @@ namespace FuzzOpen
                     System.IO.Directory.CreateDirectory(newPath);
                     int filenamesize = random.Next(100);
                     String tempfilename = "";
-                    int[] forbidden = { 47, 92, 58, 42, 63, 34, 60, 62, 124 };
+                    int[] forbidden = { 47, 92, 58, 42, 63, 34, 60, 62, 124 }; //list of forbidden characters to use on filename
 
                     for (int x = 0; x < filenamesize; x++)
                     {
@@ -456,6 +465,11 @@ namespace FuzzOpen
                 textBox4.AppendText("NUMBER: " + i + "CHAR: " + nextchar.ToString());
                 textBox4.AppendText("\n");
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

@@ -123,4 +123,13 @@
   <metadata name="openFileDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>180, 17</value>
   </metadata>
+  <data name="textBox9.Text" xml:space="preserve">
+    <value>This software is under a GPLv3 License. Feel free to use it modify it and break it in any way that you can and want. Please give credit when needed. Iti is actively being developed by Tiago Henriques(@balgan) and Filipe Reis (@fjereis), we do this for fun and in our spare time, feel free to submit bugs, patches and request features! We will see what we can do about it!</value>
+  </data>
+  <data name="textBox8.Text" xml:space="preserve">
+    <value>The create tab is used to generate files with random names and content that can be used to fuzz all sorts of software, you just need to pick the extensions on the side bar, choose how many files you want generated and a location for them to be generated. You also need to pick a project name, this will be a subfolder created with all your files inside. </value>
+  </data>
+  <data name="textBox7.Text" xml:space="preserve">
+    <value>The fuzz tab is used to fuzz different programs, you can choose the application, choose a folder which contains all the files you want that application to try and define a timer between the opening of the files. The argument part is used in case you want to pass any arguments to the application, for example if you are fuzzing microsoft word you need to pass the "/t" argument.</value>
+  </data>
 </root>

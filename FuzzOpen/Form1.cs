@@ -193,7 +193,7 @@ namespace FuzzOpen
 
             if (!System.IO.File.Exists(newPath))
             {
-
+                StringBuilder sb = new StringBuilder();
 
                 object fileName = newPath;
                 object missing = System.Reflection.Missing.Value;
@@ -208,9 +208,9 @@ namespace FuzzOpen
                     Byte[] b = new Byte[1];
                     random.NextBytes(b);
 
-                    word.Selection.TypeText(b[0].ToString());
-                    word.Selection.TypeParagraph();
+                    sb.AppendLine(b[0].ToString());
                 }
+                word.Selection.TypeText(sb.ToString());
                 /*
                 //Insert a paragraph at the beginning of the document.
                 Word.Paragraph para1;
@@ -246,7 +246,7 @@ namespace FuzzOpen
 
             if (!System.IO.File.Exists(newPath))
             {
-
+                StringBuilder sb = new StringBuilder();
            
                 object fileName = newPath;
                 object missing = System.Reflection.Missing.Value;
@@ -261,9 +261,9 @@ namespace FuzzOpen
                     Byte[] b = new Byte[1];
                     random.NextBytes(b);
 
-                    word.Selection.TypeText(b[0].ToString());
-                    word.Selection.TypeParagraph();
+                    sb.AppendLine(b[0].ToString());
                 }
+                word.Selection.TypeText(sb.ToString());
                 /*
                 //Insert a paragraph at the beginning of the document.
                 Word.Paragraph para1;

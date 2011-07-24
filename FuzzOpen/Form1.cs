@@ -8,8 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
 using Microsoft.Office.Core;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
@@ -41,29 +39,36 @@ namespace FuzzOpen
         private void button3_Click(object sender, EventArgs e)
         {
             Process applicationtest = new Process();
-            applicationtest.StartInfo.FileName = listBox2.Items[0].ToString();//textBox1.Text.ToString();
-
+            applicationtest.StartInfo.FileName = listBox2.Items[0].ToString();
+            
             foreach (String arg in listBox1.Items)
             {
                 applicationtest.StartInfo.Arguments = arg;
-
                 applicationtest.Start();
 
-                //applicationtest.WaitForExit();
+                System.Threading.Thread.Sleep(Convert.ToInt32(textBoxTimer.Text) * 1000);
 
+                /*
+                System.Diagnostics.Process endProcess = new System.Diagnostics.Process();
+                System.Diagnostics.ProcessStartInfo stratInfo = new System.Diagnostics.ProcessStartInfo();
+                stratInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                stratInfo.FileName = "cmd.exe";
+                stratInfo.Arguments = ("taskkill /F /IM " + listBox2.Items[1].ToString() + ".exe");
+                endProcess.StartInfo = stratInfo;
+                endProcess.Start();
+                */
+                
                 foreach (Process clsProcess in Process.GetProcesses())
                 {
-
-
-                    if (clsProcess.ProcessName.StartsWith(listBox2.Items[1].ToString() + textBox6.ToString()))
+                    if (clsProcess.ProcessName.StartsWith(listBox2.Items[1].ToString()))
                     {
-                        //textBox3.Text += clsProcess.ToString() + System.Environment.NewLine;
                         System.Threading.Thread.Sleep(Convert.ToInt32(textBoxTimer.Text) * 1000);
                         applicationtest.Kill();
-                        //clsProcess.Kill();
-                        textBox3.Text += (arg + " CLOSED" + System.Environment.NewLine);
+
+                        textBox3.Text += (arg + System.Environment.NewLine + "CLOSED" + System.Environment.NewLine + System.Environment.NewLine);
+
                         /*
-                        if (applicationtest.HasExited == true)
+                        if (applicationtest.HasExited)
                         {
                             textBox3.Text += (arg + " CLOSED" + System.Environment.NewLine);
                         }
@@ -71,19 +76,15 @@ namespace FuzzOpen
                         {
                             //textBox3.Text += (applicationtest.StandardError.ToString() + System.Environment.NewLine);
                         }
-                         * */
+                        */
                     }
                 }
-                //System.Threading.Thread.Sleep(5000);
             }
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /*openFileDialog2.ShowDialog();
-            textBox2.Text = openFileDialog2.FileName.ToString();*/
-
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
             DialogResult result = folderBrowserDialog1.ShowDialog();
 
@@ -111,8 +112,6 @@ namespace FuzzOpen
             textBox7.Enabled = false;
             textBox8.Enabled = false;
             textBox9.Enabled = false;
-            
-
         }
 
         private void createPDF(String tempfilename, String newPath, Random random)
@@ -145,7 +144,6 @@ namespace FuzzOpen
 
                         // step 4: Now add some contents to the document
                         myDocument.Add(new iTextSharp.text.Paragraph(b[0].ToString()));
-                        //myDocument.Add(new Paragraph("First Pdf File made by Salman using iText"));
                     }
                 }
                 catch (iTextSharp.text.DocumentException de)
@@ -210,20 +208,8 @@ namespace FuzzOpen
 
                     sb.AppendLine(b[0].ToString());
                 }
+
                 word.Selection.TypeText(sb.ToString());
-                /*
-                //Insert a paragraph at the beginning of the document.
-                Word.Paragraph para1;
-                para1 = document.Content.Paragraphs.Add(ref missing);
-                para1.Range.Text = "Adding paragraph thru C#";
-                para1.Range.Font.Bold = 1;
-                para1.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                para1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
-                para1.Range.InsertParagraphAfter();
-                */
-                //word.Visible = true;
-
-
 
                 document.SaveAs2(ref fileName, ref missing, ref missing, ref missing, ref missing, ref missing,
                                     ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
@@ -231,6 +217,7 @@ namespace FuzzOpen
 
                 document.Close(ref missing, ref missing, ref missing);
                 word.Quit(ref missing, ref missing, ref missing);
+
                 textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
             }
         }
@@ -263,7 +250,9 @@ namespace FuzzOpen
 
                     sb.AppendLine(b[0].ToString());
                 }
+
                 word.Selection.TypeText(sb.ToString());
+
                 /*
                 //Insert a paragraph at the beginning of the document.
                 Word.Paragraph para1;
@@ -276,14 +265,13 @@ namespace FuzzOpen
                 */
                 //word.Visible = true;
 
-                    
-
                 document.SaveAs2(ref fileName, ref missing, ref missing, ref missing, ref missing, ref missing,
                                     ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, 
                                     ref missing, ref missing, ref missing, ref missing);
 
                 document.Close(ref missing, ref missing, ref missing);
                 word.Quit(ref missing, ref missing, ref missing);
+
                 textBox4.AppendText("Created file: " + newPath.ToString() + System.Environment.NewLine + "SIZE: " + sizeofwrite.ToString() + "\r\n\r\n");
             }
         }
@@ -353,6 +341,31 @@ namespace FuzzOpen
             }
         }
 
+        private String creatFileName(String newPath, Random random)
+        {
+            System.IO.Directory.CreateDirectory(newPath);
+            int filenamesize = random.Next(100);
+            String tempfilename = "";
+            int[] forbidden = { 47, 92, 58, 42, 63, 34, 60, 62, 124 }; //list of forbidden characters to use on filename
+
+            for (int x = 0; x < filenamesize; x++)
+            {
+                int randomchar = random.Next(32, 126);
+
+                if (forbidden.Contains(randomchar))
+                {
+                    x--;
+                }
+                else
+                {
+                    char nextchar = Convert.ToChar(randomchar);
+                    tempfilename = tempfilename + nextchar.ToString();
+                }
+            }
+
+            return tempfilename;
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {            
@@ -362,77 +375,60 @@ namespace FuzzOpen
             }
             else
             {
-                
                 int numberoffiles = Convert.ToInt32(textBox2.Text);
+                
                 if(numberoffiles > 10){
                     System.Windows.Forms.MessageBox.Show("Warning! Depending on your CPU this might take a while!");
                 }
 
                 Random random = new Random();
+                string activeDir = textBox1.Text.ToString();
+                string projectname = textBox5.Text.ToString();
+                string newPath = System.IO.Path.Combine(activeDir, projectname);
 
-                for (int i = 0; i < numberoffiles; i++)
+                foreach (int indexChecked in checkedListBox1.CheckedIndices)
                 {
-                    string activeDir = textBox1.Text.ToString();
-                    string projectname = textBox5.Text.ToString();
-                    string newPath = System.IO.Path.Combine(activeDir, projectname);
-
-                    System.IO.Directory.CreateDirectory(newPath);
-                    int filenamesize = random.Next(100);
-                    String tempfilename = "";
-                    int[] forbidden = { 47, 92, 58, 42, 63, 34, 60, 62, 124 }; //list of forbidden characters to use on filename
-
-                    for (int x = 0; x < filenamesize; x++)
+                    if (checkedListBox1.GetItemCheckState(indexChecked) == CheckState.Checked)
                     {
-                        int randomchar = random.Next(32, 126);
+                        String tempfilename;
 
-                        if (forbidden.Contains(randomchar))
+                        for (int i = 0; i < numberoffiles; i++)
                         {
-                            x--;
-                        }
-                        else
-                        {
-                            char nextchar = Convert.ToChar(randomchar);
-                            tempfilename = tempfilename + nextchar.ToString();
-                        }
-                    }
+                            tempfilename = creatFileName(newPath, random);
 
-                    foreach (int indexChecked in checkedListBox1.CheckedIndices)
-                    {
-                        if (checkedListBox1.GetItemCheckState(indexChecked) == CheckState.Checked)
-                        {
                             if (indexChecked == 0)
                             {
                                 createPDF(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 1)
+                            else if (indexChecked == 1)
                             {
                                 createMP3(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 2)
+                            else if (indexChecked == 2)
                             {
                                 createDOC(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 3)
+                            else if (indexChecked == 3)
                             {
                                 createDOCX(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 4)
+                            else if (indexChecked == 4)
                             {
                                 createXLS(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 5)
+                            else if (indexChecked == 5)
                             {
                                 createXLSX(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 6)
+                            else if (indexChecked == 6)
                             {
                                 createPPT(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 7)
+                            else if (indexChecked == 7)
                             {
                                 createPPTX(tempfilename, newPath, random);
                             }
-                            if (indexChecked == 8)
+                            else if (indexChecked == 8)
                             {
                                 createAVI(tempfilename, newPath, random);
                             }
@@ -453,14 +449,12 @@ namespace FuzzOpen
                 DirectoryInfo selectedpathforfiles = new DirectoryInfo(folderBrowserDialog1.SelectedPath);
                 textBox1.Text = selectedpathforfiles.ToString();
             }
-
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             for (int i = 0; i <= 126; i++)
             {
-
                 char nextchar = Convert.ToChar(i);
                 textBox4.AppendText("NUMBER: " + i + "CHAR: " + nextchar.ToString());
                 textBox4.AppendText("\n");

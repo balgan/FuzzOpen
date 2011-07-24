@@ -124,7 +124,7 @@
     <value>180, 17</value>
   </metadata>
   <data name="textBox9.Text" xml:space="preserve">
-    <value>This software is under a GPLv3 License. Feel free to use it modify it and break it in any way that you can and want. Please give credit when needed. Iti is actively being developed by Tiago Henriques(@balgan) and Filipe Reis (@fjereis), we do this for fun and in our spare time, feel free to submit bugs, patches and request features! We will see what we can do about it!</value>
+    <value>This software is under a GPLv3 License. Feel free to use it modify it and break it in any way that you can and want. Please give credit when needed. Iti is actively being developed by Tiago Henriques(@balgan) and Filipe Reis (@fjreis), we do this for fun and in our spare time, feel free to submit bugs, patches and request features! We will see what we can do about it!</value>
   </data>
   <data name="textBox8.Text" xml:space="preserve">
     <value>The create tab is used to generate files with random names and content that can be used to fuzz all sorts of software, you just need to pick the extensions on the side bar, choose how many files you want generated and a location for them to be generated. You also need to pick a project name, this will be a subfolder created with all your files inside. </value>

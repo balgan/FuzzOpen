@@ -465,6 +465,42 @@ namespace FuzzOpen
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int numberofcharacters = Convert.ToInt32(textBox11.Text);
+            String filename = textBox10.Text.ToString() + textBox12.Text.ToString();
+            string activeDir = textBox14.Text.ToString();
+            String newPath = System.IO.Path.Combine(activeDir, filename);
+            textBox13.AppendText(newPath);
+            char chartowrite = Convert.ToChar(textBox15.Text.ToString());
+            byte towrite = Convert.ToByte(chartowrite);
+            if (!System.IO.File.Exists(newPath))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(newPath))
+                {
+                    textBox13.AppendText("FILE BEING CREATED: " + newPath);
+                    for (int i = 0; i < numberofcharacters; i++)
+                    {
+                        fs.WriteByte(towrite);
+                    }
+                }
+            }
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                //Obtain information about the path
+                DirectoryInfo selectedpathforfiles = new DirectoryInfo(folderBrowserDialog1.SelectedPath);
+                textBox14.AppendText(selectedpathforfiles.ToString());
+            }
+        }
     }
 }
 

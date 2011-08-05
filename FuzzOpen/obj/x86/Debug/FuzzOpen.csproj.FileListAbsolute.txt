@@ -27,3 +27,15 @@ C:\Users\Balgan\Documents\My Dropbox\PHP\CSHARP\FuzzOpen\obj\x86\Debug\GenerateR
 C:\Users\Balgan\Documents\My Dropbox\PHP\CSHARP\FuzzOpen\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Dropbox\PHP\FuzzOpen\FuzzOpen\obj\x86\Debug\FuzzOpen.exe
 D:\Dropbox\PHP\FuzzOpen\FuzzOpen\obj\x86\Debug\FuzzOpen.pdb
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\FuzzOpen.csproj.ResolveComReference.cache
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\FuzzOpen.Form1.resources
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\FuzzOpen.Properties.Resources.resources
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\bin\Debug\FuzzOpen.exe
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\bin\Debug\FuzzOpen.pdb
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\bin\Debug\itextsharp.dll
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\bin\Debug\itextsharp.xtra.dll
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\FuzzOpen.exe
+C:\Users\Balgan\Desktop\Development\Fuzzopen\FuzzOpen\obj\x86\Debug\FuzzOpen.pdb

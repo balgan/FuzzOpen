@@ -17,6 +17,44 @@ namespace FuzzOpen
 {
     public partial class Form1 : Form
     {
+        int start = 0;
+        int indexOfSearchText = 0;
+
+
+        public int FindMyText(string txtToSearch, int searchStart, int searchEnd)
+        {
+            // Unselect the previously searched string
+            if (searchStart > 0 && searchEnd > 0 && indexOfSearchText >= 0)
+            {
+                rtb.Undo();
+            }
+
+            // Set the return value to -1 by default.
+            int retVal = -1;
+
+            // A valid starting index should be specified.
+            // if indexOfSearchText = -1, the end of search
+            if (searchStart >= 0 && indexOfSearchText >= 0)
+            {
+                // A valid ending index
+                if (searchEnd > searchStart || searchEnd == -1)
+                {
+                    // Find the position of search string in RichTextBox
+                    indexOfSearchText = rtb.Find(txtToSearch, searchStart, searchEnd, RichTextBoxFinds.None);
+                    // Determine whether the text was found in richTextBox1.
+                    if (indexOfSearchText != -1)
+                    {
+                        // Return the index to the specified search text.
+                        retVal = indexOfSearchText;
+                    }
+                }
+            }
+            return retVal;
+        }
+
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -543,17 +581,64 @@ namespace FuzzOpen
             //openFileDialog1.RestoreDirectory = true;
 
             openFileDialog1.ShowDialog();
-
+            textBox17.Text = openFileDialog1.FileName.ToString();
             listBox2.Items.Add(openFileDialog1.FileName);
             byte[] fileasbytearray =  FileToByteArray(openFileDialog1.FileName.ToString());
-            textBox16.Text=  Utils.HexDump(fileasbytearray).ToString();
-
+            rtb.Text = Utils.HexDump(fileasbytearray).ToString();
 
 
         
         
         }
+        
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            button13.Enabled = true;
+            txtSearch.Enabled = false;
+            int startindex = 0;
+
+            if (txtSearch.Text.Length > 0)
+                startindex = FindMyText(txtSearch.Text.Trim(), start, rtb.Text.Length);
+
+            // If string was found in the RichTextBox, highlight it
+            if (startindex >= 0)
+            {
+                label21.Text = "Issue found for " + txtSearch.Text.ToString();
+                // Set the highlight color as red
+                rtb.SelectionColor = Color.Red;
+                rtb.SelectionBackColor = Color.Yellow;
+                // Find the end index. End Index = number of characters in textbox
+                int endindex = txtSearch.Text.Length;
+                // Highlight the search string
+                rtb.Select(startindex, endindex);
+                // mark the start position after the position of
+                // last search string
+                start = startindex + endindex;
+            }
+            else {
+
+                label21.Text = "Nothing found for " + txtSearch.Text.ToString();
+            }
+            rtb.ScrollToCaret();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            txtSearch.Enabled = true;
+            button13.Enabled = false;
+            start = 0;
+            indexOfSearchText = 0;
+            label21.Text = "";
+            rtb.SelectAll();
+            rtb.SelectionBackColor = Color.White;
+            rtb.SelectionColor = Color.Black;
+        }
+
+     
     }
+
+
 
  class Utils
     {

@@ -84,11 +84,15 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.rtb = new System.Windows.Forms.RichTextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -654,9 +658,13 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button13);
+            this.tabPage5.Controls.Add(this.label21);
+            this.tabPage5.Controls.Add(this.txtSearch);
+            this.tabPage5.Controls.Add(this.button12);
+            this.tabPage5.Controls.Add(this.rtb);
             this.tabPage5.Controls.Add(this.textBox17);
             this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Controls.Add(this.textBox16);
             this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.button11);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
@@ -665,6 +673,31 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Hex Dumper";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(848, 11);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 22);
+            this.txtSearch.TabIndex = 7;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(767, 11);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 6;
+            this.button12.Text = "Search";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // rtb
+            // 
+            this.rtb.Location = new System.Drawing.Point(10, 113);
+            this.rtb.Name = "rtb";
+            this.rtb.Size = new System.Drawing.Size(1555, 703);
+            this.rtb.TabIndex = 5;
+            this.rtb.Text = "";
             // 
             // textBox17
             // 
@@ -681,17 +714,6 @@
             this.label20.Size = new System.Drawing.Size(81, 17);
             this.label20.TabIndex = 3;
             this.label20.Text = "Current File";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(10, 120);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox16.Size = new System.Drawing.Size(1555, 696);
-            this.textBox16.TabIndex = 2;
-            this.textBox16.WordWrap = false;
             // 
             // label19
             // 
@@ -711,6 +733,25 @@
             this.button11.Text = "Choose File";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(968, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 17);
+            this.label21.TabIndex = 8;
+            // 
+            // button13
+            // 
+            this.button13.Enabled = false;
+            this.button13.Location = new System.Drawing.Point(767, 40);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 52);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "Reset search";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // Form1
             // 
@@ -796,9 +837,13 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.RichTextBox rtb;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button13;
     }
 }
 

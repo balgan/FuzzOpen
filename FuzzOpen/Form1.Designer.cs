@@ -69,25 +69,32 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -193,11 +200,12 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(1, 2);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1133, 580);
+            this.tabControl1.Size = new System.Drawing.Size(1600, 900);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -220,7 +228,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1125, 551);
+            this.tabPage1.Size = new System.Drawing.Size(1592, 871);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Fuzz";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -291,7 +299,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1125, 551);
+            this.tabPage2.Size = new System.Drawing.Size(1592, 871);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -441,7 +449,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1125, 551);
+            this.tabPage3.Size = new System.Drawing.Size(1592, 871);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Help";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -521,26 +529,101 @@
             this.tabPage4.Controls.Add(this.textBox10);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1125, 551);
+            this.tabPage4.Size = new System.Drawing.Size(1592, 871);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Overflows";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // textBox10
+            // textBox15
             // 
-            this.textBox10.Location = new System.Drawing.Point(164, 77);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 22);
-            this.textBox10.TabIndex = 0;
+            this.textBox15.Location = new System.Drawing.Point(164, 170);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 22);
+            this.textBox15.TabIndex = 14;
             // 
-            // label13
+            // label18
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(92, 82);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 17);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Filename";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(70, 170);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(87, 17);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "Char to write";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(113, 4);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 17);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Directory";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(184, 4);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 22);
+            this.textBox14.TabIndex = 11;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(513, 40);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 17);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "DEBUG";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(516, 60);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(578, 102);
+            this.textBox13.TabIndex = 9;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(359, 76);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(112, 57);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "Create";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(88, 143);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 17);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Extension";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(164, 140);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 22);
+            this.textBox12.TabIndex = 6;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(164, 111);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 22);
+            this.textBox11.TabIndex = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(147, 17);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Number of Characters";
             // 
             // button9
             // 
@@ -553,102 +636,87 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // label14
+            // label13
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 111);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(147, 17);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Number of Characters";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(92, 82);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 17);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Filename";
             // 
-            // textBox11
+            // textBox10
             // 
-            this.textBox11.Location = new System.Drawing.Point(164, 111);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 22);
-            this.textBox11.TabIndex = 5;
+            this.textBox10.Location = new System.Drawing.Point(164, 77);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 22);
+            this.textBox10.TabIndex = 0;
             // 
-            // textBox12
+            // tabPage5
             // 
-            this.textBox12.Location = new System.Drawing.Point(164, 140);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 22);
-            this.textBox12.TabIndex = 6;
+            this.tabPage5.Controls.Add(this.textBox17);
+            this.tabPage5.Controls.Add(this.label20);
+            this.tabPage5.Controls.Add(this.textBox16);
+            this.tabPage5.Controls.Add(this.label19);
+            this.tabPage5.Controls.Add(this.button11);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1592, 871);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Hex Dumper";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // textBox17
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(88, 143);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 17);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "Extension";
+            this.textBox17.Location = new System.Drawing.Point(309, 14);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(100, 22);
+            this.textBox17.TabIndex = 4;
             // 
-            // button10
+            // label20
             // 
-            this.button10.Location = new System.Drawing.Point(359, 76);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(112, 57);
-            this.button10.TabIndex = 8;
-            this.button10.Text = "Create";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(222, 14);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(81, 17);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Current File";
             // 
-            // textBox13
+            // textBox16
             // 
-            this.textBox13.Location = new System.Drawing.Point(516, 60);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(578, 102);
-            this.textBox13.TabIndex = 9;
+            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox16.Location = new System.Drawing.Point(10, 120);
+            this.textBox16.Multiline = true;
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox16.Size = new System.Drawing.Size(1555, 696);
+            this.textBox16.TabIndex = 2;
+            this.textBox16.WordWrap = false;
             // 
-            // label16
+            // label19
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(513, 40);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 17);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "DEBUG";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 75);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 17);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "HexDump";
             // 
-            // textBox14
+            // button11
             // 
-            this.textBox14.Location = new System.Drawing.Point(184, 4);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 22);
-            this.textBox14.TabIndex = 11;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(113, 4);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 17);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Directory";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(70, 170);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(87, 17);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "Char to write";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(164, 170);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 22);
-            this.textBox15.TabIndex = 14;
+            this.button11.Location = new System.Drawing.Point(7, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(96, 47);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "Choose File";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 583);
+            this.ClientSize = new System.Drawing.Size(1582, 855);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
@@ -663,6 +731,8 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -723,6 +793,12 @@
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button11;
     }
 }
 

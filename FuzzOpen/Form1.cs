@@ -501,7 +501,119 @@ namespace FuzzOpen
                 textBox14.AppendText(selectedpathforfiles.ToString());
             }
         }
+
+
+        public byte[] FileToByteArray(string _FileName)
+        {
+            byte[] _Buffer = null;
+
+            try
+            {
+                // Open file for reading
+                System.IO.FileStream _FileStream = new System.IO.FileStream(_FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+
+                // attach filestream to binary reader
+                System.IO.BinaryReader _BinaryReader = new System.IO.BinaryReader(_FileStream);
+
+                // get total byte length of the file
+                long _TotalBytes = new System.IO.FileInfo(_FileName).Length;
+
+                // read entire file into buffer
+                _Buffer = _BinaryReader.ReadBytes((Int32)_TotalBytes);
+
+                // close file reader
+                _FileStream.Close();
+                _FileStream.Dispose();
+                _BinaryReader.Close();
+            }
+            catch (Exception _Exception)
+            {
+                // Error
+                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+            }
+
+            return _Buffer;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            //openFileDialog1.RestoreDirectory = true;
+
+            openFileDialog1.ShowDialog();
+
+            listBox2.Items.Add(openFileDialog1.FileName);
+            byte[] fileasbytearray =  FileToByteArray(openFileDialog1.FileName.ToString());
+            textBox16.Text=  Utils.HexDump(fileasbytearray).ToString();
+
+
+
+        
+        
+        }
     }
+
+ class Utils
+    {
+        public static string HexDump(byte[] bytes)
+        {
+            if (bytes==null) return "<null>";
+            int len=bytes.Length;
+            StringBuilder result = new StringBuilder(((len + 15) / 16) * 78);           
+            char[] chars = new char[78];
+            // fill all with blanks
+            for (int i = 0; i < 75; i++) chars[i] = ' ';
+            chars[76]='\r';
+            chars[77] = '\n';
+
+            for (int i1 = 0; i1 < len; i1 += 16)
+            {
+                chars[0] = HexChar(i1 >> 28);
+                chars[1] = HexChar(i1 >> 24);
+                chars[2] = HexChar(i1 >> 20);
+                chars[3] = HexChar(i1 >> 16);
+                chars[4] = HexChar(i1 >> 12);
+                chars[5] = HexChar(i1 >> 8);
+                chars[6] = HexChar(i1 >> 4);
+                chars[7] = HexChar(i1 >> 0);
+
+                int offset1 = 11;
+                int offset2 = 60;
+                    
+                for (int i2 = 0; i2 < 16; i2++)
+                {
+                    if (i1 + i2 >= len)
+                    {
+                        chars[offset1] = ' ';
+                        chars[offset1 + 1] = ' ';
+                        chars[offset2] = ' ';
+                    }
+                    else
+                    {
+                        byte b = bytes[i1 + i2];
+                        chars[offset1] = HexChar(b >> 8);
+                        chars[offset1 + 1] = HexChar(b);
+                        chars[offset2] = (b < 32 ? '·' : (char)b);
+                    }
+                    offset1 += (i2 == 8 ? 4 : 3);
+                    offset2++;
+                }
+                result.Append(chars);
+            }
+            return result.ToString();
+        }
+
+        private static char HexChar(int value)
+        {
+            value &= 0xF;
+            if (value >= 0 && value <= 9) return (char)('0' + value);
+            else return (char)('A' + (value - 10));
+        }
+    }
+
 }
+
 
 
